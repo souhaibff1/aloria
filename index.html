@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aloria | Gaming Community</title>
+    <meta name="description" content="A fun gaming community for friends and players. Join the world of Aloria now!">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animated">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="icons/logo.png" alt="Aloria" class="nav-logo-img">
+                <span>ALORIA</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#games" data-i18n="nav_games">Games</a></li>
+                <li><a href="#features" data-i18n="nav_features">Features</a></li>
+                <li><a href="#rules" data-i18n="nav_rules">Rules</a></li>
+                <li><a href="#staff" data-i18n="nav_staff">Staff</a></li>
+            </ul>
+            <div class="lang-switch">
+                <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+                <span style="color:var(--text-muted)">|</span>
+                <button id="btn-ar" class="lang-btn" onclick="setLang('ar')">AR</button>
+            </div>
+            <a href="https://discord.gg/j5MJDFTtwC" target="_blank" class="nav-join-btn" data-i18n="nav_join">Join Discord</a>
+            <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content floating">
+            <div class="hero-badge" data-i18n="hero_badge">Welcome to the best server 🚀</div>
+            <h1 class="hero-title" data-i18n="hero_title">Join the world of <span class="text-glow">Aloria</span> now</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">A fun gaming community for friends and players</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="stat-text">
+                        <span class="counter" data-target="15420">0</span>
+                        <span data-i18n="stat_members">Active Members</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="stat-text">
+                        <span class="counter" data-target="24">0</span>
+                        <span data-i18n="stat_voice">Voice Channels</span>
+                    </div>
+                </div>
+            </div>
+            <a href="https://discord.gg/j5MJDFTtwC" target="_blank" class="btn-primary hero-btn">
+                <i class="fa-brands fa-discord"></i> <span data-i18n="nav_join">Join Discord</span>
+            </a>
+        </div>
+        <div class="hero-graphics parallax" data-speed="0.05">
+            <div class="graphic-card gc-1 floating-slow"><i class="fa-solid fa-crosshairs"></i></div>
+            <div class="graphic-card gc-2 floating-fast"><i class="fa-solid fa-trophy"></i></div>
+            <div class="graphic-card gc-3 floating-med"><i class="fa-solid fa-meteor"></i></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 data-i18n="about_title">About <span class="text-glow">Aloria</span></h2>
+                <p data-i18n="about_subtitle">Small friendly gaming community, fun, simple, and active</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass-panel">
+                    <div class="card-icon"><i class="fa-solid fa-face-smile-wink"></i></div>
+                    <h3 data-i18n="about_1_title">Friendly Vibe</h3>
+                    <p data-i18n="about_1_desc">We pride ourselves on maintaining a toxic-free, welcoming environment for everyone.</p>
+                </div>
+                <div class="about-card glass-panel">
+                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 data-i18n="about_2_title">Simple & Fast</h3>
+                    <p data-i18n="about_2_desc">No complicated rules or overloaded channels. Jump in and start playing immediately.</p>
+                </div>
+                <div class="about-card glass-panel">
+                    <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+                    <h3 data-i18n="about_3_title">Always Active</h3>
+                    <p data-i18n="about_3_desc">There's always someone online ready to team up or just chill in voice chat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games section-padding" id="games">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 data-i18n="games_title">Games We <span class="text-glow">Play</span></h2>
+                <p data-i18n="games_subtitle">Find your squad and dominate the leaderboards</p>
+            </div>
+            <div class="games-grid">
+                <!-- Free Fire -->
+                <div class="game-card">
+                    <div class="game-status status-working" data-i18n="game_ff_status">Clan Working ✅</div>
+                    <div class="game-bg bg-ff"></div>
+                    <div class="game-content">
+                        <div class="game-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                        <h3 data-i18n="game_ff_title">Free Fire</h3>
+                        <p data-i18n="game_ff_desc">Squad up and survive</p>
+                    </div>
+                </div>
+                <!-- Among Us -->
+                <div class="game-card">
+                    <div class="game-bg bg-au"></div>
+                    <div class="game-content">
+                        <div class="game-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                        <h3 data-i18n="game_au_title">Among Us</h3>
+                        <p data-i18n="game_au_desc">Find the impostor</p>
+                    </div>
+                </div>
+                <!-- Minecraft -->
+                <div class="game-card">
+                    <div class="game-status status-making" data-i18n="game_mc_status">Server Under Making 🚧</div>
+                    <div class="game-bg bg-mc"></div>
+                    <div class="game-content">
+                        <div class="game-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <h3 data-i18n="game_mc_title">Minecraft</h3>
+                        <p data-i18n="game_mc_desc">Build, explore, survive</p>
+                    </div>
+                </div>
+                <!-- Rocket League -->
+                <div class="game-card">
+                    <div class="game-bg bg-rl"></div>
+                    <div class="game-content">
+                        <div class="game-icon"><i class="fa-solid fa-car-burst"></i></div>
+                        <h3 data-i18n="game_rl_title">Rocket League</h3>
+                        <p data-i18n="game_rl_desc">Car soccer action</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section-padding" id="features">
+        <div class="container section-reveal">
+            <div class="features-wrapper">
+                <div class="features-image floating">
+                    <div class="mockup-frame glass-panel">
+                        <div class="mockup-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-msg"><div class="avatar-small"></div><div class="msg-text" data-i18n="mock_msg_1">Anyone up for some games? 🎮</div></div>
+                            <div class="mockup-msg right"><div class="msg-text" data-i18n="mock_msg_2">I'm down! Let's go! 🚀</div><div class="avatar-small alt"></div></div>
+                            <div class="mockup-msg"><div class="avatar-small"></div><div class="msg-text" data-i18n="mock_msg_3">Joining voice channel now!</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-content">
+                    <h2 data-i18n="feat_title">Why Join <span class="text-glow">Our Server?</span></h2>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-handshake"></i></div>
+                            <div>
+                                <h4 data-i18n="feat_1_title">Friendly Community</h4>
+                                <p data-i18n="feat_1_desc">Meet awesome people and make lasting friendships.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-user-group"></i></div>
+                            <div>
+                                <h4 data-i18n="feat_2_title">Active Players</h4>
+                                <p data-i18n="feat_2_desc">Never play alone again. LFG channels are always active.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
+                            <div>
+                                <h4 data-i18n="feat_3_title">Events & Giveaways</h4>
+                                <p data-i18n="feat_3_desc">Participate in server tournaments, movie nights, and nitro giveaways.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><i class="fa-solid fa-broom"></i></div>
+                            <div>
+                                <h4 data-i18n="feat_4_title">Clean Environment</h4>
+                                <p data-i18n="feat_4_desc">Well-organized channels, no clutter, and great moderation.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="rules section-padding" id="rules">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 data-i18n="rules_title">Server <span class="text-glow">Rules</span></h2>
+                <p data-i18n="rules_subtitle">Keep it clean, keep it fun</p>
+            </div>
+            <div class="rules-container glass-panel">
+                <ol class="rules-list">
+                    <li>
+                        <div class="rule-icon"><i class="fa-solid fa-heart"></i></div>
+                        <div class="rule-text" data-i18n="rule_1"><strong>Respect Everyone:</strong> No toxicity, racism, or hate speech will be tolerated.</div>
+                    </li>
+                    <li>
+                        <div class="rule-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                        <div class="rule-text" data-i18n="rule_2"><strong>No Spamming:</strong> Keep the chat clean. Do not spam messages or emojis.</div>
+                    </li>
+                    <li>
+                        <div class="rule-icon"><i class="fa-solid fa-rectangle-ad"></i></div>
+                        <div class="rule-text" data-i18n="rule_3"><strong>No Self-Promotion:</strong> Please don't advertise other servers or links in general chat.</div>
+                    </li>
+                    <li>
+                        <div class="rule-icon"><i class="fa-solid fa-masks-theater"></i></div>
+                        <div class="rule-text" data-i18n="rule_4"><strong>Keep it SFW:</strong> This is a safe environment. No NSFW content allowed.</div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section class="staff section-padding" id="staff">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 data-i18n="staff_title">Meet The <span class="text-glow">Team</span></h2>
+                <p data-i18n="staff_subtitle">The awesome people keeping Aloria safe</p>
+            </div>
+            <div class="staff-grid">
+                <div class="staff-card glass-panel">
+                    <div class="staff-avatar has-img">
+                        <img src="icons/souhaib.webp" alt="SOUHAIB">
+                        <div class="status online"></div>
+                    </div>
+                    <h3>SOUHAIB</h3>
+                    <span class="role admin" data-i18n="staff_owner">Server Owner</span>
+                </div>
+                <div class="staff-card glass-panel">
+                    <div class="staff-avatar has-img">
+                        <img src="icons/m19.webp" alt="Massod">
+                        <div class="status dnd"></div>
+                    </div>
+                    <h3>Massod</h3>
+                    <span class="role mod" data-i18n="staff_head_mod">Head Mod</span>
+                </div>
+                <div class="staff-card glass-panel">
+                    <div class="staff-avatar has-img">
+                        <img src="icons/yasser.webp" alt="yasser">
+                        <div class="status idle"></div>
+                    </div>
+                    <h3>yasser</h3>
+                    <span class="role mod" data-i18n="staff_mod">Moderator</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news section-padding" id="news">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 data-i18n="news_title">Latest <span class="text-glow">Updates</span></h2>
+                <p data-i18n="news_subtitle">What's happening in Aloria</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card glass-panel">
+                    <div class="news-date" data-i18n="news_1_date">April 20, 2026</div>
+                    <h3 data-i18n="news_1_title">Minecraft Server Launch! ⛏️</h3>
+                    <p data-i18n="news_1_desc">We just launched our official SMP. Join the fun and claim your land today.</p>
+                </div>
+                <div class="news-card glass-panel">
+                    <div class="news-date" data-i18n="news_2_date">April 15, 2026</div>
+                    <h3 data-i18n="news_2_title">Rocket League Tournament 🏎️</h3>
+                    <p data-i18n="news_2_desc">Signups are open for the 2v2 tournament this weekend. Prize pool: Discord Nitro!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join CTA Section -->
+    <section class="join-cta section-padding" id="join">
+        <div class="container section-reveal">
+            <div class="cta-box glass-panel floating">
+                <h2 data-i18n="join_title">Ready to start your adventure?</h2>
+                <p data-i18n="join_subtitle">Join thousands of gamers in Aloria and never play alone again!</p>
+                <a href="https://discord.gg/j5MJDFTtwC" target="_blank" class="btn-primary btn-large cta-glow">
+                    <i class="fa-brands fa-discord"></i> <span data-i18n="nav_join">Join Discord Server</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="icons/logo.png" alt="Aloria" class="footer-logo-img"> ALORIA
+                </div>
+                <p data-i18n="footer_rights">&copy; 2026 Aloria Gaming Community. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://discord.gg/j5MJDFTtwC" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                    <a href="javascript:void(0)" style="cursor: default; opacity: 0.5;"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="javascript:void(0)" style="cursor: default; opacity: 0.5;"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
