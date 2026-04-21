@@ -26,7 +26,7 @@ const translations = {
         games_subtitle: "Find your squad and dominate the leaderboards",
         game_ff_status: "Clan Working ✅",
         game_ff_title: "Free Fire",
-        game_ff_desc: "Squad up and survive",
+        game_ff_desc: "Clan: ＡＬＯＲＩＡ모 | ID: 3096348635 (Click to copy)",
         game_au_title: "Among Us",
         game_au_desc: "Find the impostor",
         game_mc_status: "Server Under Making 🚧",
@@ -52,7 +52,7 @@ const translations = {
         rule_2: "<strong>No Spamming:</strong> Keep the chat clean. Do not spam messages or emojis.",
         rule_3: "<strong>No Self-Promotion:</strong> Please don't advertise other servers or links in general chat.",
         rule_4: "<strong>Keep it SFW:</strong> This is a safe environment. No NSFW content allowed.",
-        staff_title: "Meet Our <span class='text-glow'>Friends</span>",
+        staff_title: "Meet New <span class='text-glow'>Friends</span>",
         staff_subtitle: "The awesome people playing in Aloria",
         staff_owner: "Server Owner",
         staff_head_mod: "Head Mod",
@@ -63,8 +63,8 @@ const translations = {
         news_1_title: "Minecraft Server in Development! ⛏️",
         news_1_desc: "Our official SMP is currently under construction. Get ready for an amazing adventure soon!",
         news_2_date: "April 15, 2026",
-        news_2_title: "Rocket League Tournament 🏎️",
-        news_2_desc: "Signups are open for the 2v2 tournament this weekend. Prize pool: Discord Nitro!",
+        news_2_title: "Discord Server Update ✨",
+        news_2_desc: "We've updated our channels and added new features to improve your experience!",
         join_title: "Ready to start your adventure?",
         join_subtitle: "Join thousands of gamers in Aloria and never play alone again!",
         footer_rights: "&copy; 2026 Aloria Gaming Community. All rights reserved."
@@ -93,7 +93,7 @@ const translations = {
         games_subtitle: "اعثر على فريقك وتصدر قوائم المتصدرين",
         game_ff_status: "الكلان نشط ✅",
         game_ff_title: "فري فاير",
-        game_ff_desc: "شكّل فريقك وابق حياً",
+        game_ff_desc: "الكلان: ＡＬＯＲＩＡ모 | ID: 3096348635 (اضغط للنسخ)",
         game_au_title: "أمونج أس",
         game_au_desc: "ابحث عن المحتال",
         game_mc_status: "السيرفر قيد الإنشاء 🚧",
@@ -119,7 +119,7 @@ const translations = {
         rule_2: "<strong>لا للسبام:</strong> حافظ على نظافة الشات. لا تكرر الرسائل أو السمايلات.",
         rule_3: "<strong>لا للترويج:</strong> يرجى عدم الإعلان عن سيرفرات أخرى أو روابط في الشات العام.",
         rule_4: "<strong>محتوى لائق:</strong> هذه بيئة آمنة. يمنع نشر محتوى غير لائق.",
-        staff_title: "تعرف على <span class='text-glow'>أصدقائنا</span>",
+        staff_title: "تعرف على <span class='text-glow'>أصدقاء جدد</span>",
         staff_subtitle: "الأشخاص الرائعون الذين يلعبون في Aloria",
         staff_owner: "مالك السيرفر",
         staff_head_mod: "كبير المشرفين",
@@ -130,8 +130,8 @@ const translations = {
         news_1_title: "جاري تطوير سيرفر ماينكرافت! ⛏️",
         news_1_desc: "سيرفر SMP الرسمي قيد الإنشاء حالياً. استعدوا لمغامرة مذهلة قريباً!",
         news_2_date: "15 أبريل 2026",
-        news_2_title: "بطولة روكيت ليغ 🏎️",
-        news_2_desc: "التسجيل مفتوح لبطولة 2 ضد 2 هذا الأسبوع. الجائزة: ديسكورد نيترو!",
+        news_2_title: "تحديث سيرفر الديسكورد ✨",
+        news_2_desc: "قمنا بتحديث الغرف وإضافة مميزات جديدة لتحسين تجربتكم!",
         join_title: "مستعد لبدء مغامرتك؟",
         join_subtitle: "انضم لآلاف اللاعبين في Aloria ولن تلعب وحيداً أبداً!",
         footer_rights: "&copy; 2026 مجتمع Aloria للألعاب. جميع الحقوق محفوظة."
@@ -285,3 +285,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Copy Free Fire ID
+function copyFreeFireID() {
+    navigator.clipboard.writeText("3096348635").then(() => {
+        alert("Free Fire Clan ID (3096348635) copied to clipboard!");
+    }).catch(err => {
+        console.error('Failed to copy ID: ', err);
+    });
+}
