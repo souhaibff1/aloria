@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aloria | Gaming Community</title>
     <meta name="description" content="A fun gaming community for friends and players. Join the world of Aloria now!">
+    <link rel="icon" type="image/png" href="icons/logo.png">
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -113,7 +114,7 @@
             </div>
             <div class="games-grid">
                 <!-- Free Fire -->
-                <div class="game-card">
+                <div class="game-card" onclick="copyFreeFireID()" style="cursor: pointer;">
                     <div class="game-status status-working" data-i18n="game_ff_status">Clan Working ✅</div>
                     <div class="game-bg bg-ff"></div>
                     <div class="game-content">
@@ -123,7 +124,7 @@
                     </div>
                 </div>
                 <!-- Among Us -->
-                <div class="game-card">
+                <div class="game-card" onclick="window.open('https://discord.com/channels/1482486895576612864/1495490068280901823', '_blank')" style="cursor: pointer;">
                     <div class="game-bg bg-au"></div>
                     <div class="game-content">
                         <div class="game-icon"><i class="fa-solid fa-user-astronaut"></i></div>
@@ -142,7 +143,7 @@
                     </div>
                 </div>
                 <!-- Rocket League -->
-                <div class="game-card">
+                <div class="game-card" onclick="window.open('https://discord.com/channels/1482486895576612864/1495482303097602088', '_blank')" style="cursor: pointer;">
                     <div class="game-bg bg-rl"></div>
                     <div class="game-content">
                         <div class="game-icon"><i class="fa-solid fa-car-burst"></i></div>
@@ -241,7 +242,7 @@
     <section class="staff section-padding" id="staff">
         <div class="container section-reveal">
             <div class="section-header">
-                <h2 data-i18n="staff_title">Meet The <span class="text-glow">Team</span></h2>
+                <h2 data-i18n="staff_title">Meet New <span class="text-glow">Friends</span></h2>
                 <p data-i18n="staff_subtitle">The awesome people keeping Aloria safe</p>
             </div>
             <div class="staff-grid">
@@ -288,8 +289,8 @@
                 </div>
                 <div class="news-card glass-panel">
                     <div class="news-date" data-i18n="news_2_date">April 15, 2026</div>
-                    <h3 data-i18n="news_2_title">Rocket League Tournament 🏎️</h3>
-                    <p data-i18n="news_2_desc">Signups are open for the 2v2 tournament this weekend. Prize pool: Discord Nitro!</p>
+                    <h3 data-i18n="news_2_title">Discord Server Update ✨</h3>
+                    <p data-i18n="news_2_desc">We've updated our channels and added new features to improve your experience!</p>
                 </div>
             </div>
         </div>
