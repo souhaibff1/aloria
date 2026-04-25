@@ -40,7 +40,7 @@
                 <span style="color:var(--text-muted)">|</span>
                 <button id="btn-ar" class="lang-btn" onclick="setLang('ar')">AR</button>
             </div>
-            <a href="https://discord.gg/j5MJDFTtwC" target="_blank" class="nav-join-btn" data-i18n="nav_join">Join Discord</a>
+            <a href="https://discord.gg/nQMsFPF7uA" target="_blank" class="nav-join-btn" data-i18n="nav_join">Join Discord</a>
             <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
         </div>
     </nav>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://discord.gg/j5MJDFTtwC" target="_blank" class="btn-primary hero-btn">
+            <a href="https://discord.gg/nQMsFPF7uA" target="_blank" class="btn-primary hero-btn">
                 <i class="fa-brands fa-discord"></i> <span data-i18n="nav_join">Join Discord</span>
             </a>
         </div>
@@ -133,8 +133,8 @@
                     </div>
                 </div>
                 <!-- Minecraft -->
-                <div class="game-card">
-                    <div class="game-status status-making" data-i18n="game_mc_status">Server Under Making 🚧</div>
+                <div class="game-card" onclick="openMCModal()" style="cursor: pointer;">
+                    <div class="game-status status-working" data-i18n="game_mc_status">Click to View Status 🌐</div>
                     <div class="game-bg bg-mc"></div>
                     <div class="game-content">
                         <div class="game-icon"><i class="fa-solid fa-cubes"></i></div>
@@ -302,12 +302,23 @@
             <div class="cta-box glass-panel floating">
                 <h2 data-i18n="join_title">Ready to start your adventure?</h2>
                 <p data-i18n="join_subtitle">Join thousands of gamers in Aloria and never play alone again!</p>
-                <a href="https://discord.gg/j5MJDFTtwC" target="_blank" class="btn-primary btn-large cta-glow">
+                <a href="https://discord.gg/nQMsFPF7uA" target="_blank" class="btn-primary btn-large cta-glow">
                     <i class="fa-brands fa-discord"></i> <span data-i18n="nav_join">Join Discord Server</span>
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Minecraft Modal -->
+    <div id="mc-modal" class="modal-overlay" onclick="if(event.target === this) closeMCModal()">
+        <div class="modal-content glass-panel">
+            <span class="close-modal" onclick="closeMCModal()">&times;</span>
+            <h2 data-i18n="mc_server_title">Minecraft Server Status</h2>
+            <div id="mc-status-container">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -318,8 +329,8 @@
                 </div>
                 <p data-i18n="footer_rights">&copy; 2026 Aloria Gaming Community. All rights reserved.</p>
                 <div class="footer-links">
-                    <a href="https://discord.gg/j5MJDFTtwC" target="_blank"><i class="fa-brands fa-discord"></i></a>
-                    <a href="javascript:void(0)" style="cursor: default; opacity: 0.5;"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://discord.gg/nQMsFPF7uA" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                    <a href="https://souhaibff1.github.io/aloria/" target="_blank"><i class="fa-solid fa-globe"></i></a>
                     <a href="javascript:void(0)" style="cursor: default; opacity: 0.5;"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
