@@ -439,3 +439,25 @@
             alert(isArabic ? 'تم نسخ أيبي السيرفر بنجاح!' : "Server IP copied to clipboard!");
         });
     }
+
+    // Sleek Loading Screen
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 600);
+        }
+    });
+
+    // Konami Code Easter Egg
+    const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
+    let inputSequence = [];
+    document.addEventListener('keydown', (e) => {
+        inputSequence.push(e.key);
+        inputSequence = inputSequence.slice(-secretCode.length);
+        if (JSON.stringify(inputSequence) === JSON.stringify(secretCode)) {
+            window.open('https://www.youtube.com/watch?v=qthxa7m_B4E', '_blank');
+            inputSequence = [];
+        }
+    });
