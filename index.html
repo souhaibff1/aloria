@@ -13,6 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@400;500;600;700;800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Sleek Loading Screen -->
+    <div id="loader">
+        <img src="icons/logo.png" alt="Loading..." class="loader-logo">
+    </div>
+
     <!-- Animated Background -->
     <div class="bg-animated">
         <div class="blob blob-1"></div>
@@ -165,9 +170,9 @@
                             <span></span><span></span><span></span>
                         </div>
                         <div class="mockup-body">
-                            <div class="mockup-msg"><div class="avatar-small"></div><div class="msg-text" data-i18n="mock_msg_1">Anyone up for some games? 🎮</div></div>
-                            <div class="mockup-msg right"><div class="msg-text" data-i18n="mock_msg_2">I'm down! Let's go! 🚀</div><div class="avatar-small alt"></div></div>
-                            <div class="mockup-msg"><div class="avatar-small"></div><div class="msg-text" data-i18n="mock_msg_3">Joining voice channel now!</div></div>
+                            <div class="mockup-msg"><div class="avatar-small" style="background-image: url('icons/first.jpeg');"></div><div class="msg-text" data-i18n="mock_msg_1">Anyone up for some games? 🎮</div></div>
+                            <div class="mockup-msg right"><div class="msg-text" data-i18n="mock_msg_2">I'm down! Let's go! 🚀</div><div class="avatar-small alt" style="background-image: url('icons/islam.png');"></div></div>
+                            <div class="mockup-msg"><div class="avatar-small" style="background-image: url('icons/first.jpeg');"></div><div class="msg-text" data-i18n="mock_msg_3">Joining voice channel now!</div></div>
                         </div>
                     </div>
                 </div>
@@ -302,6 +307,11 @@
             <div class="cta-box glass-panel floating">
                 <h2 data-i18n="join_title">Ready to start your adventure?</h2>
                 <p data-i18n="join_subtitle">Join thousands of gamers in Aloria and never play alone again!</p>
+                
+                <div class="discord-widget-wrapper" style="margin: 30px auto; max-width: 350px;">
+                    <iframe src="https://discord.com/widget?id=1482486895576612864&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
+                </div>
+
                 <a href="https://discord.gg/nQMsFPF7uA" target="_blank" class="btn-primary btn-large cta-glow">
                     <i class="fa-brands fa-discord"></i> <span data-i18n="nav_join">Join Discord Server</span>
                 </a>
