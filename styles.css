@@ -452,6 +452,99 @@ body[dir="rtl"] .lang-switch {
     box-shadow: 0 4px 0 #1a3566, var(--glow-primary);
 }
 
+.countdown-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 180, 216, 0.1);
+    border: 2px solid var(--primary);
+    padding: 20px 40px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 30px rgba(0, 180, 216, 0.3), inset 0 0 15px rgba(0, 180, 216, 0.2);
+    backdrop-filter: blur(10px);
+    animation: pulse-cyan 3s infinite;
+}
+
+.countdown-header {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 10px rgba(0, 180, 216, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.countdown-header i {
+    color: var(--primary-light);
+    filter: drop-shadow(0 0 8px var(--primary-light));
+    animation: wiggle 2s infinite;
+}
+
+.countdown-timer {
+    display: flex;
+    gap: 15px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 18, 40, 0.7);
+    border: 1px solid rgba(0, 180, 216, 0.4);
+    border-radius: 15px;
+    width: 90px;
+    height: 90px;
+    box-shadow: inset 0 0 15px rgba(0, 180, 216, 0.2), 0 5px 15px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.time-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+}
+
+.time-box span {
+    font-size: 2.2rem;
+    font-family: 'Bungee', cursive;
+    color: var(--primary-light);
+    text-shadow: 0 0 15px rgba(0, 180, 216, 0.8), 0 2px 5px rgba(0,0,0,0.8);
+    line-height: 1;
+    z-index: 1;
+}
+
+.time-box small {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 5px;
+    font-weight: 800;
+    z-index: 1;
+}
+
+body[dir="rtl"] .time-box span {
+    font-family: 'Bungee', 'Cairo', cursive;
+}
+
+@keyframes pulse-cyan {
+    0% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.4), inset 0 0 15px rgba(0, 180, 216, 0.2); }
+    70% { box-shadow: 0 0 0 20px rgba(0, 180, 216, 0), inset 0 0 15px rgba(0, 180, 216, 0.2); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0), inset 0 0 15px rgba(0, 180, 216, 0.2); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+
 .hero-title {
     font-size: 4.5rem;
     margin-bottom: 20px;
@@ -1146,6 +1239,22 @@ footer {
     .about-grid, .games-grid { grid-template-columns: 1fr; }
     .section-padding { padding: 60px 0; }
     .cta-box h2 { font-size: 2.5rem; }
+    
+    /* Countdown Responsive */
+    .countdown-banner { padding: 15px; border-radius: 20px; }
+    .countdown-header { font-size: 1.1rem; text-align: center; flex-wrap: wrap; justify-content: center; }
+    .countdown-timer { gap: 10px; }
+    .time-box { width: 70px; height: 70px; }
+    .time-box span { font-size: 1.6rem; }
+    .time-box small { font-size: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+    .countdown-timer { gap: 8px; }
+    .time-box { width: 60px; height: 60px; }
+    .time-box span { font-size: 1.3rem; }
+    .time-box small { font-size: 0.65rem; }
+    .countdown-header { font-size: 1rem; }
 }
 
 /* Modal Styles */
