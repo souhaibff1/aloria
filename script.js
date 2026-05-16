@@ -9,12 +9,6 @@
             nav_rules: "Rules",
             nav_staff: "Friends",
             nav_join: "Join Discord",
-            announcement_text: "<strong>Minecraft Server Opening:</strong> Saturday, May 16th at 7:30 PM (Algeria Time) 🚀",
-            countdown_title: "Minecraft Server Opening In:",
-            cd_days: "Days",
-            cd_hours: "Hours",
-            cd_minutes: "Minutes",
-            cd_seconds: "Seconds",
             hero_badge: "Welcome to the best server 🚀",
             hero_title: "Join the world of <span class='text-glow'>Aloria</span> now",
             hero_subtitle: "A fun gaming community for friends and players",
@@ -66,9 +60,9 @@
             staff_mod: "Moderator",
             news_title: "Latest <span class='text-glow'>Updates</span>",
             news_subtitle: "What's happening in Aloria",
-            news_1_date: "May 16, 2026",
-            news_1_title: "Minecraft Server Grand Opening! 🚀",
-            news_1_desc: "Join us for the official opening of our Minecraft Server! Saturday, May 16th at 7:30 PM (Algeria Time).",
+            news_1_date: "April 20, 2026",
+            news_1_title: "Minecraft Server Launch! ⛏️",
+            news_1_desc: "We just launched our official SMP. Join the fun and claim your land today.",
             news_2_date: "April 15, 2026",
             news_2_title: "Discord Server Update ✨",
             news_2_desc: "We've updated our channels and added new features to improve your experience!",
@@ -83,12 +77,6 @@
             nav_rules: "القوانين",
             nav_staff: "الأصدقاء",
             nav_join: "انضم للديسكورد",
-            announcement_text: "<strong>افتتاح سيرفر ماين كرافت:</strong> يوم السبت 16 ماي على الساعة 7:30 مساءً بتوقيت الجزائر 🚀",
-            countdown_title: "افتتاح سيرفر ماين كرافت بعد:",
-            cd_days: "أيام",
-            cd_hours: "ساعات",
-            cd_minutes: "دقائق",
-            cd_seconds: "ثواني",
             hero_badge: "مرحباً بك في أفضل سيرفر 🚀",
             hero_title: "انضم إلى عالم <span class='text-glow'>Aloria</span> الآن",
             hero_subtitle: "مجتمع ألعاب ممتع للأصدقاء واللاعبين",
@@ -140,9 +128,9 @@
             staff_mod: "مشرف",
             news_title: "آخر <span class='text-glow'>التحديثات</span>",
             news_subtitle: "ماذا يحدث في Aloria",
-            news_1_date: "16 ماي 2026",
-            news_1_title: "افتتاح سيرفر ماين كرافت! 🚀",
-            news_1_desc: "انضموا إلينا في الافتتاح الرسمي لسيرفر ماين كرافت! يوم السبت 16 ماي على الساعة 7:30 مساءً بتوقيت الجزائر.",
+            news_1_date: "20 أبريل 2026",
+            news_1_title: "إطلاق سيرفر ماينكرافت! ⛏️",
+            news_1_desc: "لقد أطلقنا سيرفر SMP الرسمي الخاص بنا. انضم إلى المرح وابدأ مغامرتك اليوم.",
             news_2_date: "15 أبريل 2026",
             news_2_title: "تحديث سيرفر الديسكورد ✨",
             news_2_desc: "قمنا بتحديث الغرف وإضافة مميزات جديدة لتحسين تجربتكم!",
@@ -315,50 +303,13 @@
     function openMCModal() {
         const modal = document.getElementById('mc-modal');
         modal.classList.add('active');
+        fetchMCStatus(false); // Fetch immediately without auto-refresh flag
         
-        const now = new Date().getTime();
-        const distance = countdownTarget - now;
-        
-        if (distance > 0) {
-            // Display countdown instead of fetching status
-            renderModalCountdown();
-        } else {
-            // Fetch immediately without auto-refresh flag
-            fetchMCStatus(false);
-            
-            // Auto refresh every 5 seconds
-            if (mcStatusInterval) clearInterval(mcStatusInterval);
-            mcStatusInterval = setInterval(() => {
-                fetchMCStatus(true); // Fetch with auto-refresh flag to prevent loading spinner flicker
-            }, 5000);
-        }
-    }
-
-    function renderModalCountdown() {
-        const container = document.getElementById('mc-status-container');
-        const isArabic = document.documentElement.lang === 'ar';
-        
-        const tDays = isArabic ? 'أيام' : 'Days';
-        const tHours = isArabic ? 'ساعات' : 'Hours';
-        const tMins = isArabic ? 'دقائق' : 'Minutes';
-        const tSecs = isArabic ? 'ثواني' : 'Seconds';
-        const tTitle = isArabic ? 'افتتاح سيرفر ماين كرافت بعد:' : 'Minecraft Server Opening In:';
-        
-        container.innerHTML = `
-            <div style="padding: 30px; text-align: center;">
-                <div class="countdown-banner" style="margin: 0 auto; display: inline-flex;">
-                    <div class="countdown-header"><i class="fa-solid fa-clock"></i> <span>${tTitle}</span></div>
-                    <div class="countdown-timer" id="modal-countdown">
-                        <div class="time-box"><span id="mcd-days">00</span><small>${tDays}</small></div>
-                        <div class="time-box"><span id="mcd-hours">00</span><small>${tHours}</small></div>
-                        <div class="time-box"><span id="mcd-minutes">00</span><small>${tMins}</small></div>
-                        <div class="time-box"><span id="mcd-seconds">00</span><small>${tSecs}</small></div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        updateCountdown();
+        // Auto refresh every 5 seconds
+        if (mcStatusInterval) clearInterval(mcStatusInterval);
+        mcStatusInterval = setInterval(() => {
+            fetchMCStatus(true); // Fetch with auto-refresh flag to prevent loading spinner flicker
+        }, 5000);
     }
 
     function closeMCModal() {
@@ -370,10 +321,6 @@
             clearInterval(mcStatusInterval);
             mcStatusInterval = null;
         }
-        
-        // Clear modal content
-        const container = document.getElementById('mc-status-container');
-        if (container) container.innerHTML = '';
     }
 
     function fetchMCStatus(isAutoRefresh = false) {
@@ -386,133 +333,92 @@
         }
         
         const startTime = Date.now();
-        fetch('https://api.mcsrvstat.us/3/mc.prime-hosting.de:25684')
+        fetch('https://mcapi.us/server/status?ip=utopia.prime-hosting.de:25595')
             .then(response => response.json())
             .then(data => {
                 const ping = Date.now() - startTime;
                 if (data.online) {
                     let playersHtml = '';
-                    if (data.players && data.players.list && data.players.list.length > 0) {
-                        const playerList = data.players.list.map(p => `<span style="background: rgba(0,180,216,0.15); border: 1px solid var(--primary); color: var(--white); box-shadow: 0 0 5px rgba(0,180,216,0.3); padding: 3px 8px; border-radius: 4px; margin: 2px; display: inline-block;">${p.name}</span>`).join('');
+                    if (data.players && data.players.sample && data.players.sample.length > 0) {
+                        const playerList = data.players.sample.map(p => `<span>${p.name}</span>`).join('');
                         playersHtml = `
-                            <div class="mc-players-list" style="background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; margin-top: 15px; text-align: ${isArabic ? 'right' : 'left'}; max-height: 150px; overflow-y: auto;">
-                                <strong style="color: var(--primary-light); font-size: 1.05rem;"><i class="fa-solid fa-user-check"></i> ${isArabic ? 'اللاعبين المتصلين حالياً:' : 'Currently Online Players:'}</strong><br>
-                                <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">${playerList}</div>
+                            <div class="mc-players-list">
+                                <strong style="color: var(--primary-light);"><i class="fa-solid fa-user-check"></i> ${isArabic ? 'اللاعبين المتصلين حالياً:' : 'Currently Online Players:'}</strong><br>
+                                <div style="margin-top: 10px;">${playerList}</div>
                             </div>
                         `;
                     }
 
-                    const faviconHtml = data.icon ? `<img src="${data.icon}" alt="Server Icon" class="mc-favicon" style="border: 2px solid #23a559; box-shadow: 0 0 15px rgba(35, 165, 89, 0.4); width: 64px; height: 64px; border-radius: 12px;">` : `<div class="mc-favicon" style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); font-size:2rem; color:#23a559; border: 2px solid #23a559; box-shadow: 0 0 15px rgba(35, 165, 89, 0.4); width: 64px; height: 64px; border-radius: 12px;"><i class="fa-solid fa-server"></i></div>`;
+                    const faviconHtml = data.favicon ? `<img src="${data.favicon}" alt="Server Icon" class="mc-favicon">` : `<div class="mc-favicon" style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); font-size:2rem; color:var(--primary-light);"><i class="fa-solid fa-server"></i></div>`;
                     
-                    // Use HTML MOTD for colored text, fallback to clean
-                    const motdHtml = (data.motd && data.motd.html) ? data.motd.html.join('<br>') : ((data.motd && data.motd.clean) ? data.motd.clean.join(' ') : 'A Minecraft Server');
-                    const serverVersion = data.version || 'Unknown';
-                    const serverSoftware = data.software || 'Vanilla';
-                    const serverIP = data.ip || 'N/A';
-                    const serverHostname = data.hostname || 'mc.prime-hosting.de';
-                    const protocolVer = (data.protocol && data.protocol.version) ? data.protocol.version : 'N/A';
-                    const statStyle = 'background: linear-gradient(to bottom, rgba(10,18,40,0.8), rgba(0,0,0,0.9)); padding: 15px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 8px; border: 1px solid var(--glass-border); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease;';
+                    // Clean MOTD from color codes and extra whitespace
+                    const cleanMotd = data.motd ? data.motd.replace(/§[0-9a-fk-or]/gi, '').trim() : 'A Minecraft Server';
                     
                     container.innerHTML = `
-                        <div class="mc-status-card online" style="padding: 25px; background: linear-gradient(135deg, rgba(35, 165, 89, 0.05), rgba(0,0,0,0.6)); border: 1px solid rgba(35, 165, 89, 0.3); margin-top:0; border-radius: 20px; box-shadow: inset 0 0 20px rgba(35, 165, 89, 0.1), 0 10px 30px rgba(0,0,0,0.6); position: relative; overflow: hidden;">
-                            <div style="position:absolute; top:-50px; right:-50px; width:150px; height:150px; background:#23a559; filter:blur(100px); opacity:0.3; pointer-events:none;"></div>
-                            
-                            <div class="mc-modal-header" style="position:relative; z-index:1; border-bottom: 1px dashed rgba(35, 165, 89, 0.3); display: flex; align-items: center; gap: 15px; padding-bottom: 15px; margin-bottom: 20px;">
+                        <div class="mc-status-card online" style="padding: 0; background: transparent; border: none; margin-top:0;">
+                            <div class="mc-modal-header">
                                 ${faviconHtml}
-                                <div class="mc-header-info" style="text-align: ${isArabic ? 'right' : 'left'};">
-                                    <h3 style="text-shadow: 0 0 10px rgba(0,180,216,0.5); font-size: 1.8rem; margin: 0; color: var(--primary-light); text-transform: uppercase;">Aloria Network</h3>
-                                    <span style="color: #23a559; font-weight: bold; font-size: 1rem; display:inline-flex; align-items:center; gap:8px; margin-top:5px; background: rgba(35, 165, 89, 0.1); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(35, 165, 89, 0.3);">
-                                        <span style="display:inline-block; width:12px; height:12px; background:#23a559; border-radius:50%; box-shadow: 0 0 10px #23a559, 0 0 20px #23a559; animation: pulse 1.5s infinite;"></span>
+                                <div class="mc-header-info">
+                                    <h3>Aloria Network</h3>
+                                    <span style="color: #23a559; font-weight: bold; font-size: 0.95rem; display:inline-flex; align-items:center; gap:5px; margin-top:5px;">
+                                        <span style="display:inline-block; width:10px; height:10px; background:#23a559; border-radius:50%; box-shadow: 0 0 10px #23a559; animation: pulse 2s infinite;"></span>
                                         ${isArabic ? 'السيرفر متصل ويعمل بشكل ممتاز' : 'Server is Online & Operational'}
                                     </span>
                                 </div>
                             </div>
                             
-                            <div class="mc-motd" style="font-size: 1.05rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); box-shadow: inset 0 0 10px rgba(0,0,0,0.8); padding: 12px; border-radius: 8px; text-align: center; margin-bottom: 25px; white-space: pre-line; line-height: 1.4; font-family: 'Courier New', Courier, monospace;">
-                                ${motdHtml}
+                            <div class="mc-motd">
+                                ${cleanMotd}
                             </div>
                             
-                            <div class="mc-stats-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px;">
-                                <div class="mc-stat-item" style="${statStyle}">
-                                    <i class="fa-solid fa-users" style="color: #00b4d8; text-shadow: 0 0 10px #00b4d8; font-size: 1.6rem;"></i>
-                                    <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${isArabic ? 'اللاعبين' : 'Players'}</span>
-                                    <strong style="color: #fff; font-size: 1.1rem;">${data.players.online} / ${data.players.max}</strong>
+                            <div class="mc-stats-grid">
+                                <div class="mc-stat-item">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>${isArabic ? 'اللاعبين' : 'Players'}</span>
+                                    <strong>${data.players.now} / ${data.players.max}</strong>
                                 </div>
-                                <div class="mc-stat-item" style="${statStyle}">
-                                    <i class="fa-solid fa-wifi" style="color: #23a559; text-shadow: 0 0 10px #23a559; font-size: 1.6rem;"></i>
-                                    <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${isArabic ? 'البنج' : 'Latency'}</span>
-                                    <strong style="color: #23a559; font-size: 1.1rem;">${ping}ms</strong>
+                                <div class="mc-stat-item">
+                                    <i class="fa-solid fa-wifi"></i>
+                                    <span>${isArabic ? 'البنج' : 'Latency'}</span>
+                                    <strong style="color: #23a559;">${ping}ms</strong>
                                 </div>
-                                <div class="mc-stat-item" style="${statStyle}">
-                                    <i class="fa-solid fa-code-branch" style="color: #f0b232; text-shadow: 0 0 10px #f0b232; font-size: 1.6rem;"></i>
-                                    <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${isArabic ? 'الإصدار' : 'Version'}</span>
-                                    <strong style="color: #fff; font-size: 1.1rem;">${serverVersion}</strong>
+                                <div class="mc-stat-item">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                    <span>${isArabic ? 'الإصدار' : 'Version'}</span>
+                                    <strong>${data.server.name}</strong>
                                 </div>
-                                <div class="mc-stat-item" style="${statStyle}">
-                                    <i class="fa-solid fa-microchip" style="color: #e056a0; text-shadow: 0 0 10px #e056a0; font-size: 1.6rem;"></i>
-                                    <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${isArabic ? 'المحرك' : 'Software'}</span>
-                                    <strong style="color: #fff; font-size: 1.1rem;">${serverSoftware}</strong>
-                                </div>
-                                <div class="mc-stat-item" style="${statStyle}">
-                                    <i class="fa-solid fa-network-wired" style="color: #90e0ef; text-shadow: 0 0 10px #90e0ef; font-size: 1.6rem;"></i>
-                                    <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${isArabic ? 'البروتوكول' : 'Protocol'}</span>
-                                    <strong style="color: #fff; font-size: 1.1rem;">v${protocolVer}</strong>
-                                </div>
-                                <div class="mc-stat-item" style="${statStyle}">
-                                    <i class="fa-solid fa-server" style="color: #7c8cf8; text-shadow: 0 0 10px #7c8cf8; font-size: 1.6rem;"></i>
-                                    <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 1px;">${isArabic ? 'الهوست' : 'Host'}</span>
-                                    <strong style="color: #fff; font-size: 0.85rem;">${serverHostname}</strong>
+                                <div class="mc-stat-item">
+                                    <i class="fa-solid fa-network-wired"></i>
+                                    <span>${isArabic ? 'البروتوكول' : 'Protocol'}</span>
+                                    <strong>v${data.server.protocol}</strong>
                                 </div>
                             </div>
                             
-                            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                                <div style="flex:1; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fa-solid fa-globe" style="color: #00b4d8; font-size: 1.2rem;"></i>
-                                    <div>
-                                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">${isArabic ? 'عنوان الآي بي' : 'Server IP'}</span>
-                                        <p style="margin:0; color: #fff; font-family: 'Courier New', monospace; font-size: 0.9rem;">${serverIP}:${data.port || 25684}</p>
-                                    </div>
-                                </div>
-                                <div style="flex:1; background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px;">
-                                    <i class="fa-solid fa-shield-halved" style="color: #23a559; font-size: 1.2rem;"></i>
-                                    <div>
-                                        <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">${isArabic ? 'حالة EULA' : 'EULA Status'}</span>
-                                        <p style="margin:0; color: ${data.eula_blocked ? '#f04747' : '#23a559'}; font-size: 0.9rem; font-weight: 600;">${data.eula_blocked ? (isArabic ? 'محظور ❌' : 'Blocked ❌') : (isArabic ? 'سليم ✅' : 'Clean ✅')}</p>
-                                    </div>
-                                </div>
-                            </div>
-
                             ${playersHtml}
                             
-                            <div style="margin-top: 30px; text-align: center; position: relative; z-index: 1;">
-                                <p style="margin-bottom: 12px; font-size: 1rem; color: var(--white); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
-                                    <i class="fa-solid fa-gamepad" style="color: var(--primary-light);"></i> ${isArabic ? 'انسخ الأيبي وابدأ اللعب الآن' : 'Copy IP and start playing now'}
+                            <div style="margin-top: 25px; text-align: ${isArabic ? 'right' : 'left'};">
+                                <p style="margin-bottom: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">
+                                    <i class="fa-solid fa-gamepad"></i> ${isArabic ? 'انسخ الأيبي وابدأ اللعب الآن:' : 'Copy IP and start playing now:'}
                                 </p>
-                                <div class="mc-copy-box" onclick="copyMCIP()" style="background: linear-gradient(90deg, rgba(0, 180, 216, 0.2), rgba(0, 119, 182, 0.3)); border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(0, 180, 216, 0.4); padding: 18px 25px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: space-between;" onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 25px rgba(0, 180, 216, 0.6)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 15px rgba(0, 180, 216, 0.4)';">
-                                    <span style="font-size: 1.2rem; font-family: 'Courier New', monospace; letter-spacing: 0px; text-shadow: 0 0 8px rgba(255,255,255,0.4); font-weight: 800; color: var(--white);">mc.prime-hosting.de:25684</span>
-                                    <i class="fa-solid fa-copy" style="font-size: 1.4rem; color: var(--primary-light); filter: drop-shadow(0 0 5px var(--primary-light));"></i>
+                                <div class="mc-copy-box" onclick="copyMCIP()">
+                                    <span>utopia.prime-hosting.de:25595</span>
+                                    <i class="fa-solid fa-copy"></i>
                                 </div>
                             </div>
                         </div>
                     `;
                 } else {
                     container.innerHTML = `
-                        <div class="mc-status-card offline" style="padding: 30px; background: linear-gradient(135deg, rgba(240, 71, 71, 0.05), rgba(0,0,0,0.6)); border: 1px solid rgba(240, 71, 71, 0.3); border-radius: 20px; position: relative; overflow: hidden; box-shadow: inset 0 0 20px rgba(240, 71, 71, 0.1), 0 10px 30px rgba(0,0,0,0.6);">
-                            <div style="position:absolute; top:-50px; left:-50px; width:150px; height:150px; background:#f04747; filter:blur(100px); opacity:0.2; pointer-events:none;"></div>
+                        <div class="mc-status-card offline">
+                            <div class="mc-status-icon"><i class="fa-solid fa-times-circle"></i></div>
+                            <h3 style="color: #f04747; margin-bottom:10px;">${isArabic ? 'غير متصل' : 'Offline'}</h3>
+                            <p style="color: var(--text-muted); margin-bottom:20px;">${isArabic ? 'السيرفر يخضع للصيانة أو غير متصل حالياً.' : 'The server is currently under maintenance or offline.'}</p>
                             
-                            <div class="mc-status-icon" style="font-size: 4rem; color: #f04747; filter: drop-shadow(0 0 15px rgba(240, 71, 71, 0.6)); margin-bottom: 15px;">
-                                <i class="fa-solid fa-times-circle"></i>
-                            </div>
-                            <h3 style="color: #f04747; margin-bottom:10px; font-size: 2rem; text-shadow: 0 0 10px rgba(240, 71, 71, 0.4); text-transform: uppercase;">${isArabic ? 'غير متصل' : 'Offline'}</h3>
-                            <p style="color: var(--text-muted); margin-bottom:25px; font-size: 1.1rem;">${isArabic ? 'السيرفر يخضع للصيانة أو غير متصل حالياً.' : 'The server is currently under maintenance or offline.'}</p>
-                            
-                            <div style="text-align: center; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 15px; border: 1px solid var(--glass-border);">
-                                <p style="margin-bottom: 12px; font-size: 1rem; color: var(--white); font-weight: bold; text-transform: uppercase;">
-                                    ${isArabic ? 'الأيبي الخاص بالسيرفر:' : 'Server IP:'}
-                                </p>
-                                <div class="mc-copy-box" onclick="copyMCIP()" style="background: rgba(240, 71, 71, 0.1); border: 2px dashed rgba(240, 71, 71, 0.5); display: flex; align-items: center; justify-content: center; gap: 15px; padding: 15px 20px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(240, 71, 71, 0.2)';" onmouseout="this.style.background='rgba(240, 71, 71, 0.1)';">
-                                    <span style="color: #ff7676; font-family: 'Courier New', monospace; font-size: 1.2rem; font-weight: 800; letter-spacing: 1px;">mc.prime-hosting.de:25684</span>
-                                    <i class="fa-solid fa-copy" style="color: #ff7676; font-size: 1.2rem;"></i>
+                            <div style="text-align: ${isArabic ? 'right' : 'left'};">
+                                <p style="margin-bottom: 10px; font-size: 0.95rem; color: var(--text-muted); font-weight: bold;">${isArabic ? 'الأيبي الخاص بالسيرفر:' : 'Server IP:'}</p>
+                                <div class="mc-copy-box" onclick="copyMCIP()">
+                                    <span style="color: #f04747;">utopia.prime-hosting.de:25595</span>
+                                    <i class="fa-solid fa-copy"></i>
                                 </div>
                             </div>
                         </div>
@@ -528,7 +434,7 @@
     }
 
     function copyMCIP() {
-        navigator.clipboard.writeText("mc.prime-hosting.de:25684").then(() => {
+        navigator.clipboard.writeText("utopia.prime-hosting.de:25595").then(() => {
             const isArabic = document.documentElement.lang === 'ar';
             alert(isArabic ? 'تم نسخ أيبي السيرفر بنجاح!' : "Server IP copied to clipboard!");
         });
@@ -545,86 +451,13 @@
     });
 
     // Konami Code Easter Egg
-    const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    const secretCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'];
     let inputSequence = [];
     document.addEventListener('keydown', (e) => {
-        const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-        inputSequence.push(key);
+        inputSequence.push(e.key);
         inputSequence = inputSequence.slice(-secretCode.length);
         if (JSON.stringify(inputSequence) === JSON.stringify(secretCode)) {
             window.open('https://www.youtube.com/watch?v=qthxa7m_B4E', '_blank');
             inputSequence = [];
         }
     });
-
-    // Countdown Timer Logic
-    const countdownTarget = new Date("May 16, 2026 19:30:00 GMT+0100").getTime();
-    let countdownInterval;
-
-    function getCountdownValues(distance) {
-        if (distance < 0) return null;
-        return {
-            days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-            minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-            seconds: Math.floor((distance % (1000 * 60)) / 1000)
-        };
-    }
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = countdownTarget - now;
-        const isArabic = document.documentElement.lang === 'ar';
-        const finishedHTML = `<div style="font-size: 1.8rem; color: var(--primary-light); font-weight: bold; text-shadow: 0 0 15px rgba(0, 180, 216, 0.8);">${isArabic ? 'تم افتتاح سيرفر ماين كرافت! 🎉' : 'Minecraft Server is Now Open! 🎉'}</div>`;
-        const pad = (n) => n < 10 ? "0" + n : n;
-        
-        // Update Hero Countdown
-        const timerElement = document.getElementById("mc-countdown");
-        if (timerElement) {
-            if (distance < 0) {
-                timerElement.innerHTML = finishedHTML;
-            } else {
-                const values = getCountdownValues(distance);
-                const elDays = document.getElementById("cd-days");
-                const elHours = document.getElementById("cd-hours");
-                const elMinutes = document.getElementById("cd-minutes");
-                const elSeconds = document.getElementById("cd-seconds");
-                
-                if (elDays) elDays.innerText = pad(values.days);
-                if (elHours) elHours.innerText = pad(values.hours);
-                if (elMinutes) elMinutes.innerText = pad(values.minutes);
-                if (elSeconds) elSeconds.innerText = pad(values.seconds);
-            }
-        }
-        
-        // Update Modal Countdown
-        const modalTimer = document.getElementById("modal-countdown");
-        if (modalTimer) {
-            if (distance < 0) {
-                const container = document.getElementById('mc-status-container');
-                if (container) {
-                    container.innerHTML = '';
-                    fetchMCStatus(false);
-                }
-            } else {
-                const values = getCountdownValues(distance);
-                const mDays = document.getElementById("mcd-days");
-                const mHours = document.getElementById("mcd-hours");
-                const mMinutes = document.getElementById("mcd-minutes");
-                const mSeconds = document.getElementById("mcd-seconds");
-                
-                if (mDays) mDays.innerText = pad(values.days);
-                if (mHours) mHours.innerText = pad(values.hours);
-                if (mMinutes) mMinutes.innerText = pad(values.minutes);
-                if (mSeconds) mSeconds.innerText = pad(values.seconds);
-            }
-        }
-        
-        if (distance < 0 && !document.getElementById("modal-countdown")) {
-            if (countdownInterval) clearInterval(countdownInterval);
-        }
-    }
-    
-    countdownInterval = setInterval(updateCountdown, 1000);
-    // Call once to define variables
-    updateCountdown();
